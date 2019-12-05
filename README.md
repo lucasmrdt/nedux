@@ -1,6 +1,169 @@
-# Nedux - The Next Redux
+# Nedux - The `n`ext r`edux`
 
-> _🧠 Nedux = Next rEDUX_
+> @todo
+
+## 📦 Installation
+
+```bash
+npm install nedux --save
+```
+
+## 💻 Usage with examples
+
+### Use it with Typescript ♥️
+
+```typescript
+import { createStore } from 'nedux';
+
+interface Todo {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+enum Filter {
+  ShowAll = 'ShowAll',
+  ShowCompleted = 'ShowCompleted',
+  ShowActive = 'ShowActive',
+}
+
+// Create the store
+const todoStore = createStore({
+  todos: [] as Todo,
+  filter: Filter.ShowAll,
+});
+
+// You can subscribe to field update.
+todoStore.subscribe('filter', newFilter => {
+  console.log(`filter has changed with ${newFilter}`);
+});
+
+// You can get a value.
+todoStore.get('filter');
+// └> 'ShowAll'
+
+// You can set a value.
+todoStore.set('filter', Filter.ShowCompleted);
+
+// And that's it !
+```
+
+### Or simply with Javascript
+
+```javascript
+import { createStore } from 'nedux';
+
+// Create the store
+const todoStore = createStore({
+  todos: [],
+  filter: 'ShowAll',
+});
+
+// You can subscribe to field update.
+todoStore.subscribe('filter', newFilter => {
+  console.log(`filter has changed with ${newFilter}`);
+});
+
+// You can get a value.
+todoStore.get('filter');
+// └> 'ShowAll'
+
+// You can set a value.
+todoStore.set('filter', 'ShowCompleted');
+
+// And that's it !
+```
+
+## 📜 Documentation
+
+### `Import`
+
+```javascript
+// ES6
+import { createStore } from 'redux';
+
+// ES5
+var createStore = require('redux').createStore;
+```
+
+### `createStore(initialState, [middlewares])`
+
+Creates a Nedux store with the shape of the `initialState`.
+
+|   argument    | required |             type             | description                                                                                         |
+| :-----------: | :------: | :--------------------------: | :-------------------------------------------------------------------------------------------------- |
+| `initalState` |    ✅    |            object            | The intial state of your store.                                                                     |
+| `middlewares` |    ❌    | [Middleware](#middlewares)[] | Middlewares are used to enhance your store see the [middleware section](#middlewares) to know more. |
+
+### `store`
+
+The `store` object created by `createStore` it'll allow you to interact with your store.
+
+<details>
+<summary>`store.get(key)`</summary>
+<br>
+
+| argument | required |  type  | description                               |
+| :------: | :------: | :----: | :---------------------------------------- |
+|  `key`   |    ✅    | string | The key of the store that you want to get |
+
+</details>
+
+<details>
+<summary>`store.set(key, value)`</summary>
+<br>
+
+| argument | required |  type  | description                                    |
+| :------: | :------: | :----: | :--------------------------------------------- |
+|  `key`   |    ✅    | string | The key of the store that you want to override |
+| `value`  |    ✅    |  any   | The new value of the key                       |
+
+</details>
+
+<details>
+<summary>`store.subscribe(key, observer)`</summary>
+<br>
+
+|  argument  | required |                                     type                                     | description                                                                                                      |
+| :--------: | :------: | :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------- |
+|   `key`    |    ✅    |                                    string                                    | The key of the store that you'll subscribe to changes. (give a value of `''` will subscribe to all keys changes) |
+| `observer` |    ✅    | [observer](http://reactivex.io/rxjs/class/es6/MiscJSDoc.js~ObserverDoc.html) | The new value of the key                                                                                         |
+
+</details>
+
+<a id="middlewares"></a>
+
+## ⚓️ Middlewares
+
+Middleware is the suggested way to extend Nedux with custom functionality. The _created store_ is provided to each middleware. It's easy to `subscribe`/`get`/`set` value to the store inside your middleware. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.
+
+### Basic Logger Middleware
+
+```javascript
+import { createStore } from 'nedux';
+
+const loggerMiddleware = store =>
+  // we subscribe to all modifications
+  store.subscribe('', value => console.log(value));
+
+const store = createStore(
+  {
+    a: 0,
+    b: 'b',
+  },
+  [loggerMiddleware],
+);
+
+store.set('b', 'a');
+store.set('a', 1);
+store.set('a', a => a * 2);
+store.set('b', 'not b');
+```
+
+## 😍 Examples
+
+- [Todo List](./examples/todos)
+- [Logger Middleware](./examples/logger-middleware)
 
 ## 🚀 Why choose `Nedux` over `Redux` ?
 
