@@ -1,6 +1,7 @@
 # Nedux - The `n`ext r`edux`
 
-> @todo
+> Why do you waste your time by creating actions/reducers/containers/sagas/... ? \
+> **Just create a store and that's it !**
 
 ## 📦 Installation
 
@@ -100,7 +101,7 @@ Creates a Nedux store with the shape of the `initialState`.
 The `store` object created by `createStore` it'll allow you to interact with your store.
 
 <details>
-<summary>`store.get(key)`</summary>
+<summary><b>store.get(key)</b></summary>
 <br>
 
 | argument | required |  type  | description                               |
@@ -110,7 +111,7 @@ The `store` object created by `createStore` it'll allow you to interact with you
 </details>
 
 <details>
-<summary>`store.set(key, value)`</summary>
+<summary><b>store.set(key, value)</b></summary>
 <br>
 
 | argument | required |  type  | description                                    |
@@ -121,7 +122,7 @@ The `store` object created by `createStore` it'll allow you to interact with you
 </details>
 
 <details>
-<summary>`store.subscribe(key, observer)`</summary>
+<summary><b>store.subscribe(key, observer)</b></summary>
 <br>
 
 |  argument  | required |                                     type                                     | description                                                                                                      |
@@ -161,6 +162,29 @@ store.set('b', 'not b');
 ```
 
 ## 😍 Examples
+
+- [Todo List](./examples/todos)
+- [Logger Middleware](./examples/logger-middleware)
+
+## 🏗 Advised Structure
+
+> It usually a good idea to keep the store as small as possible. You can manage your application by structure it as services. Each service will have its own store _(if it needed)_
+
+```bash
+my-service
+├── components # Your components.
+│   ├── AddTodo.tsx
+│   ├── App.tsx
+│   ├── FilterLink.tsx
+│   ├── Footer.tsx
+│   ├── Link.tsx
+│   ├── Todo.tsx
+│   └── TodoList.tsx
+├── controler.ts # Where you wrap your business logic (link between api/store/ui)
+├── index.tsx # Where you export elements to other services.
+├── store.ts # Where the store is created with the initial state.
+└── types.ts # Where you put your service types.
+```
 
 - [Todo List](./examples/todos)
 - [Logger Middleware](./examples/logger-middleware)
@@ -260,3 +284,7 @@ Profiling is made with [React Profiling](https://reactjs.org/blog/2018/09/10/int
 |     **Processor**      |  2.2 GHz 6-Core Intel Core i7   |
 |       **Memory**       |       16 GB 2400 MHz DDR4       |
 |      **Graphic**       | Intel UHD Graphics 630 1536 MB  |
+
+## 🙋🏼 Contributions
+
+All [Pull Requests](https://github.com/lucasmrdt/nedux/compare?expand=1), [Issues](https://github.com/lucasmrdt/nedux/issues) and [Discussions](https://github.com/lucasmrdt/nedux/issues) are welcomed !
