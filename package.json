@@ -1,0 +1,30 @@
+{
+  "name": "nedux",
+  "version": "1.0.0",
+  "description": "the next redux state management",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
+  },
+  "keywords": [
+    "nedux",
+    "state",
+    "management",
+    "store"
+  ],
+  "author": "lucasmrdt",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.15",
+    "create-react-app": "^3.3.0",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "rxjs": "^6.5.3"
+  }
+}
