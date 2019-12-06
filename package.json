@@ -27,6 +27,13 @@
   ],
   "author": "lucasmrdt",
   "license": "ISC",
+  "npmName": "nedux",
+  "npmFileMap": [{
+    "basePath": "/dist/",
+    "files": [
+      "*.js"
+    ]
+  }],
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
