@@ -1,5 +1,7 @@
 # Nedux - The `n`ext r`edux`
 
+[![version](https://img.shields.io/badge/version-beta-blue)](https://www.npmjs.com/package/nedux) [![size](https://img.shields.io/bundlephobia/minzip/nedux?color=green&label=size)](https://www.npmjs.com/package/nedux)
+
 > Why do you waste your time by creating actions/reducers/containers/sagas/... ? \
 > **Just create a store and that's it !**
 
@@ -295,6 +297,7 @@ Profiling is made with [React Profiling](https://reactjs.org/blog/2018/09/10/int
 - [ ] Add more examples
 - [ ] Add sandbox for each examples
 - [ ] Type cleaning
+- [ ] Add CI
 
 ## 🙋🏼 Contributions
 
