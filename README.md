@@ -202,9 +202,6 @@ my-service
 └── types.ts # Where you put your service types.
 ```
 
-- [Todo List](./examples/todos)
-- [Logger Middleware](./examples/logger-middleware)
-
 ## 🚀 Why choose `Nedux` over `Redux` ?
 
 - [x] No more actions
