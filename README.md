@@ -11,7 +11,15 @@
 npm install nedux --save
 ```
 
-## 💻 Usage with examples
+## 🧲 Use `Nedux` with ...
+
+| library |    provider     |
+| :-----: | :-------------: |
+|  React  | [react-nedux]() |
+|  VueJS  |     `todo`      |
+| Angular |     `todo`      |
+
+## 💻 Basic Example
 
 ### Use it with Typescript ♥️
 
