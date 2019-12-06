@@ -151,6 +151,10 @@ The `store` object created by `createStore` it'll allow you to interact with you
 
 Middleware is the suggested way to extend Nedux with custom functionality. The _created store_ is provided to each middleware. It's easy to `subscribe`/`get`/`set` value to the store inside your middleware. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.
 
+|                           Middleware                           |              Description              |
+| :------------------------------------------------------------: | :-----------------------------------: |
+| [🔒 nedux-persist](https://github.com/lucasmrdt/nedux-persist) | Allow you to persist your nedux store |
+
 ### Basic Logger Middleware
 
 ```javascript
