@@ -13,11 +13,11 @@ npm install nedux --save
 
 ## 🧲 Use `Nedux` with ...
 
-| library |    provider     |
-| :-----: | :-------------: |
-|  React  | [react-nedux]() |
-|  VueJS  |     `todo`      |
-| Angular |     `todo`      |
+| library |                        provider                         |
+| :-----: | :-----------------------------------------------------: |
+|  React  | [react-nedux](https://github.com/lucasmrdt/react-nedux) |
+|  VueJS  |                         `todo`                          |
+| Angular |                         `todo`                          |
 
 ## 💻 Basic Example
 
