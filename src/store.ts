@@ -1,4 +1,4 @@
-import { BehaviorSubject, PartialObserver } from 'rxjs';
+import { BehaviorSubject, PartialObserver, Subscription } from 'rxjs';
 
 type DefaultState = { [key: string]: any };
 
@@ -63,6 +63,7 @@ export const createStore = <
     );
   };
 
+  // @todo conditional typing return
   /**
    * Subscribe to a key of the store
    * @param key target key you want to subscribe
@@ -71,11 +72,10 @@ export const createStore = <
   const subscribe = <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
     observer: PartialObserver<Value>,
-  ) => {
-    !key
-      ? Object.values(subjects).forEach(sub => sub.subscribe(observer))
+  ) =>
+    key === ''
+      ? Object.values(subjects).map(sub => sub.subscribe(observer))
       : subjects[key].subscribe(observer);
-  };
 
   // Create the store
   const store = { get, set, subscribe };
