@@ -200,7 +200,6 @@ my-service
 - [x] No more dispatch
 - [x] No more reducers
 - [x] No more provider
-- [x] No need to use external packages ([redux-saga](https://github.com/redux-saga/redux-saga) or [redux-persist](https://github.com/rt2zz/redux-persist))
 - [x] Fully functionnal usage
 - [x] Easiest to understand
 - [x] No "magical" effect _(all is traceable)_
@@ -219,10 +218,18 @@ my-service
 |                       |   Redux    |   Nedux   | Diff _(less is better)_ |
 | :-------------------: | :--------: | :-------: | :---------------------: |
 |    number of files    |    `13`    |   `11`    |        `-15.4%`         |
-|    number of lines    |   `224`    |   `172`   |        `-23.2%`         |
-| number of characters  |   `4343`   |  `3297`   |        `-24.0%`         |
+|    number of lines    |   `224`    |   `174`   |        `-22.3%`         |
+| number of characters  |   `4343`   |  `3298`   |        `-24.0%`         |
 | time for first render | `~10.5 ms` | `~8.5 ms` |        `-23.5%`         |
 |       add todo        | `~0.8 ms`  | `~0.6 ms` |        `-33.3%`         |
+
+### 🥊 [Redux Counter](./examples/counter) VS [Nedux Counter](./examples/counter) _(same code)_
+
+> Again feel free to test it yourself [here]().
+
+|    Render time    |  Redux   |  Nedux   | Diff _(less is better)_ |
+| :---------------: | :------: | :------: | :---------------------: |
+| with _9999_ items | `0.743s` | `0.481s` |        `-35.3%`         |
 
 ### 🏗 Structure
 
@@ -267,13 +274,13 @@ my-service
 
 ```bash
 # Compute number of files
-find $(SRC_FOLDER) -type f | wc -l
+find $SRC_FOLDER -type f | wc -l
 
 # Compute number of lines
-find $(SRC_FOLDER) -type f -exec cat {} \; | grep -v -e '^$' | grep -v -e '^//' | wc -l
+find $SRC_FOLDER -type f -exec cat {} \; | grep -v -e '^$' | grep -v -e '^//' | wc -l
 
 # Compute number of characters
-find $(SRC_FOLDER) -type f -exec cat {} \; | grep -v -e '^$' | grep -v -e '^//' | tr -d '[:space:] ' | wc -c
+find $SRC_FOLDER -type f -exec cat {} \; | grep -v -e '^$' | grep -v -e '^//' | tr -d '[:space:] ' | wc -c
 ```
 
 ### 🔎 Profiling method
@@ -298,6 +305,8 @@ Profiling is made with [React Profiling](https://reactjs.org/blog/2018/09/10/int
 - [ ] Add sandbox for each examples
 - [ ] Type cleaning
 - [ ] Add CI
+- [ ] Add VueJS connector
+- [ ] Add Angular connector
 
 ## 🙋🏼 Contributions
 
