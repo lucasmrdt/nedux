@@ -1,10 +1,9 @@
-// @from https://github.com/reduxjs/redux/blob/master/examples/todos/src/components/TodoList.js
 // @from https://github.com/reduxjs/redux/blob/master/examples/todos/src/containers/VisibleTodoList.js
 
 import React from 'react';
 import Todo from './Todo';
 import { toggleTodo } from '../controler';
-import { todoStore } from '../store';
+import { useTodo } from '../store';
 
 import { ITodo, Filter } from '../types';
 
@@ -22,8 +21,8 @@ const getVisibleTodos = (todos: ITodo[], filter: Filter) => {
 };
 
 const TodoList = () => {
-  const [todos] = todoStore.use('todos');
-  const [filter] = todoStore.use('filter');
+  const [todos] = useTodo('todos');
+  const [filter] = useTodo('filter');
   const visibleTodos = getVisibleTodos(todos, filter);
 
   return (

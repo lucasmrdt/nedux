@@ -1,6 +1,6 @@
 # Nedux - The `n`ext r`edux`
 
-[![version](https://img.shields.io/badge/version-beta-blue)](https://www.npmjs.com/package/nedux) [![size](https://img.shields.io/bundlephobia/minzip/nedux?color=green&label=size)](https://www.npmjs.com/package/nedux)
+![typescript](https://img.shields.io/badge/-typescript-blueviolet) [![version](https://img.shields.io/badge/version-beta-blue)](https://www.npmjs.com/package/nedux) [![size](https://img.shields.io/bundlephobia/minzip/nedux?color=green&label=size)](https://www.npmjs.com/package/nedux)
 
 > Why do you waste your time by creating actions/reducers/containers/sagas/... ? \
 > **Just create a store and that's it !**
@@ -168,8 +168,11 @@ store.set('b', 'not b');
 
 ## 😍 Examples
 
-- [Todo List](./examples/todos)
-- [Logger Middleware](./examples/logger-middleware)
+|         Name         |                  Source                   |                                                    Codesandbox                                                     |
+| :------------------: | :---------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
+|     ✅ Todo List     |         [here](./examples/todos)          |             [here](https://codesandbox.io/s/nedux-todos-nm8j0?fontsize=14&hidenavigation=1&theme=dark)             |
+| 🔎 Logger Middleware |   [here](./examples/logger-middleware)    |           [here](https://codesandbox.io/s/eloquent-black-hbmut?fontsize=14&hidenavigation=1&theme=dark)            |
+|      🎛 Counter       | [here](./examples/counter-nedux-vs-redux) | [here](https://codesandbox.io/s/counter-nedux-vs-redux-n34b2?fontsize=14&hidenavigation=1&theme=dark&view=preview) |
 
 ## 🏗 Advised Structure
 
@@ -225,7 +228,7 @@ my-service
 
 ### 🥊 [Redux Counter](./examples/counter) VS [Nedux Counter](./examples/counter) _(same code)_
 
-> Again feel free to test it yourself [here]().
+> Again feel free to test it yourself [here](https://codesandbox.io/s/counter-nedux-vs-redux-n34b2?fontsize=14&hidenavigation=1&theme=dark&view=preview).
 
 |    Render time    |  Redux   |  Nedux   | Diff _(less is better)_ |
 | :---------------: | :------: | :------: | :---------------------: |
@@ -299,10 +302,10 @@ Profiling is made with [React Profiling](https://reactjs.org/blog/2018/09/10/int
 
 ## 📋 Todos
 
+- [x] Add sandbox for each examples
 - [ ] Add tests
 - [ ] Be more accurate on performance comparison
 - [ ] Add more examples
-- [ ] Add sandbox for each examples
 - [ ] Type cleaning
 - [ ] Add CI
 - [ ] Add VueJS connector

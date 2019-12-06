@@ -6,6 +6,7 @@
     "nedux": "file:../..",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-nedux": "^1.0.4",
     "react-scripts": "3.3.0",
     "scheduler": "^0.18.0",
     "typescript": "^3.7.3"
