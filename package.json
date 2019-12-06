@@ -2,14 +2,21 @@
   "name": "nedux",
   "version": "1.0.4",
   "description": "the next redux state management",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/nedux.js",
+  "unpkg": "dist/nedux.js",
+  "module": "es/nedux.js",
+  "types": "types/index.d.ts",
   "repository": {
     "url": "https://github.com/lucasmrdt/nedux"
   },
+  "authors": [
+    "Lucas Marandat <lucas.marandat@epitech.eu> (https://github.com/lucasmrdt)"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "tsc"
+    "check-types": "tsc --noEmit",
+    "build": "rollup -c",
+    "prepublish": "npm run check-types && npm run build"
   },
   "keywords": [
     "nedux",
@@ -21,6 +28,16 @@
   "author": "lucasmrdt",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
+    "@rollup/plugin-node-resolve": "^6.0.0",
+    "@rollup/plugin-replace": "^2.2.1",
+    "rollup": "^1.27.8",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.25.3",
     "typescript": "^3.7.3"
   },
   "dependencies": {

@@ -80,7 +80,7 @@ export const createStore = <
   // Create the store
   const store = { get, set, subscribe };
 
-  // Call all middlewares
+  // Intialize all middlewares
   middlewares.forEach(factory => factory(store));
 
   return store;

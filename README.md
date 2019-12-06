@@ -43,8 +43,14 @@ todoStore.subscribe('filter', newFilter => {
 todoStore.get('filter');
 // └> 'ShowAll'
 
-// You can set a value.
+// You can override a value.
 todoStore.set('filter', Filter.ShowCompleted);
+
+// Or extends value by the previous one.
+todoStore.set('todos', todos => [
+  ...todos,
+  { id: 1, text: 'test', completed: false },
+]);
 
 // And that's it !
 ```
@@ -54,25 +60,22 @@ todoStore.set('filter', Filter.ShowCompleted);
 ```javascript
 import { createStore } from 'nedux';
 
-// Create the store
 const todoStore = createStore({
   todos: [],
   filter: 'ShowAll',
 });
 
-// You can subscribe to field update.
 todoStore.subscribe('filter', newFilter => {
   console.log(`filter has changed with ${newFilter}`);
 });
 
-// You can get a value.
 todoStore.get('filter');
-// └> 'ShowAll'
 
-// You can set a value.
 todoStore.set('filter', 'ShowCompleted');
-
-// And that's it !
+todoStore.set('todos', todos => [
+  ...todos,
+  { id: 1, text: 'test', completed: false },
+]);
 ```
 
 ## 📜 Documentation
@@ -81,10 +84,10 @@ todoStore.set('filter', 'ShowCompleted');
 
 ```javascript
 // ES6
-import { createStore } from 'redux';
+import { createStore } from 'nedux';
 
 // ES5
-var createStore = require('redux').createStore;
+var createStore = require('nedux').createStore;
 ```
 
 ### `createStore(initialState, [middlewares])`
@@ -93,7 +96,7 @@ Creates a Nedux store with the shape of the `initialState`.
 
 |   argument    | required |             type             | description                                                                                         |
 | :-----------: | :------: | :--------------------------: | :-------------------------------------------------------------------------------------------------- |
-| `initalState` |    ✅    |            object            | The intial state of your store.                                                                     |
+| `initalState` |    ✅    |           `object`           | The intial state of your store.                                                                     |
 | `middlewares` |    ❌    | [Middleware](#middlewares)[] | Middlewares are used to enhance your store see the [middleware section](#middlewares) to know more. |
 
 ### `store`
@@ -104,9 +107,9 @@ The `store` object created by `createStore` it'll allow you to interact with you
 <summary><b>store.get(key)</b></summary>
 <br>
 
-| argument | required |  type  | description                               |
-| :------: | :------: | :----: | :---------------------------------------- |
-|  `key`   |    ✅    | string | The key of the store that you want to get |
+| argument | required |   type   | description                               |
+| :------: | :------: | :------: | :---------------------------------------- |
+|  `key`   |    ✅    | `string` | The key of the store that you want to get |
 
 </details>
 
@@ -114,10 +117,10 @@ The `store` object created by `createStore` it'll allow you to interact with you
 <summary><b>store.set(key, value)</b></summary>
 <br>
 
-| argument | required |  type  | description                                    |
-| :------: | :------: | :----: | :--------------------------------------------- |
-|  `key`   |    ✅    | string | The key of the store that you want to override |
-| `value`  |    ✅    |  any   | The new value of the key                       |
+| argument | required |                     type                      | description                                    |
+| :------: | :------: | :-------------------------------------------: | :--------------------------------------------- |
+|  `key`   |    ✅    |                   `string`                    | The key of the store that you want to override |
+| `value`  |    ✅    | `any` <br />or<br />`(prevValue: any) => any` | The new value of the key                       |
 
 </details>
 
@@ -127,7 +130,7 @@ The `store` object created by `createStore` it'll allow you to interact with you
 
 |  argument  | required |                                     type                                     | description                                                                                                      |
 | :--------: | :------: | :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------- |
-|   `key`    |    ✅    |                                    string                                    | The key of the store that you'll subscribe to changes. (give a value of `''` will subscribe to all keys changes) |
+|   `key`    |    ✅    |                                   `string`                                   | The key of the store that you'll subscribe to changes. (give a value of `''` will subscribe to all keys changes) |
 | `observer` |    ✅    | [observer](http://reactivex.io/rxjs/class/es6/MiscJSDoc.js~ObserverDoc.html) | The new value of the key                                                                                         |
 
 </details>
@@ -168,7 +171,7 @@ store.set('b', 'not b');
 
 ## 🏗 Advised Structure
 
-> It usually a good idea to keep the store as small as possible. You can manage your application by structure it as services. Each service will have its own store _(if it needed)_
+> It usually a good idea to keep the store as small as possible. You can manage your application by structure it as services. Each service will have its own store _(if it's needed)_
 
 ```bash
 my-service
@@ -284,6 +287,14 @@ Profiling is made with [React Profiling](https://reactjs.org/blog/2018/09/10/int
 |     **Processor**      |  2.2 GHz 6-Core Intel Core i7   |
 |       **Memory**       |       16 GB 2400 MHz DDR4       |
 |      **Graphic**       | Intel UHD Graphics 630 1536 MB  |
+
+## 📋 Todos
+
+- [ ] Add tests
+- [ ] Be more accurate on performance comparison
+- [ ] Add more examples
+- [ ] Add sandbox for each examples
+- [ ] Type cleaning
 
 ## 🙋🏼 Contributions
 
