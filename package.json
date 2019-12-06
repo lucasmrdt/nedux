@@ -6,6 +6,13 @@
   "unpkg": "dist/nedux.js",
   "module": "es/nedux.js",
   "types": "types/index.d.ts",
+  "bugs": "https://github.com/lucasmrdt/nedux/issues",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src"
+  ],
   "repository": {
     "url": "https://github.com/lucasmrdt/nedux"
   },
@@ -28,14 +35,12 @@
   "author": "lucasmrdt",
   "license": "ISC",
   "npmName": "nedux",
-  "npmFileMap": [
-    {
-      "basePath": "/dist/",
-      "files": [
-        "*.js"
-      ]
-    }
-  ],
+  "npmFileMap": [{
+    "basePath": "/dist/",
+    "files": [
+      "*.js"
+    ]
+  }],
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
