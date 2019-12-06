@@ -1,6 +1,6 @@
 {
   "name": "nedux",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "the next redux state management",
   "main": "lib/nedux.js",
   "unpkg": "dist/nedux.js",
@@ -36,12 +36,14 @@
   "author": "lucasmrdt",
   "license": "ISC",
   "npmName": "nedux",
-  "npmFileMap": [{
-    "basePath": "/dist/",
-    "files": [
-      "*.js"
-    ]
-  }],
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ],
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
