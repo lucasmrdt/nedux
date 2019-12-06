@@ -14,7 +14,7 @@ export interface Store<
   subscribe: <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
     observer: PartialObserver<Value>,
-  ) => void;
+  ) => Subscription | Subscription[];
 }
 
 export interface Middleware<T, K extends keyof T> {
