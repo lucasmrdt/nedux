@@ -113,7 +113,7 @@ Creates a Nedux store with the shape of the `initialState`.
 
 The `store` object created by `createStore` it'll allow you to interact with your store.
 
-<details>
+<details open>
 <summary><b>store.get(key)</b></summary>
 <br>
 
@@ -123,7 +123,7 @@ The `store` object created by `createStore` it'll allow you to interact with you
 
 </details>
 
-<details>
+<details open>
 <summary><b>store.set(key, value)</b></summary>
 <br>
 
@@ -134,14 +134,14 @@ The `store` object created by `createStore` it'll allow you to interact with you
 
 </details>
 
-<details>
+<details open>
 <summary><b>store.subscribe(key, observer)</b></summary>
 <br>
 
-|  argument  | required |                                     type                                     | description                                                                                                      |
-| :--------: | :------: | :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------- |
-|   `key`    |    ✅    |                                   `string`                                   | The key of the store that you'll subscribe to changes. (give a value of `''` will subscribe to all keys changes) |
-| `observer` |    ✅    | [observer](http://reactivex.io/rxjs/class/es6/MiscJSDoc.js~ObserverDoc.html) | The new value of the key                                                                                         |
+|  argument  | required |                                                        type                                                         | description                                                                                                      |
+| :--------: | :------: | :-----------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------- |
+|   `key`    |    ✅    |                                                      `string`                                                       | The key of the store that you'll subscribe to changes. (give a value of `''` will subscribe to all keys changes) |
+| `observer` |    ✅    | [observer](http://reactivex.io/rxjs/class/es6/MiscJSDoc.js~ObserverDoc.html) <br /> or <br /> `(value: any) => any` | An rxjs observer or a simple callback which will be fired when the store has been updated for the given key      |
 
 </details>
 

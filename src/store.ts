@@ -71,11 +71,15 @@ export const createStore = <
    */
   const subscribe = <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
-    observer: PartialObserver<Value>,
-  ) =>
-    key === ''
-      ? Object.values(subjects).map(sub => sub.subscribe(observer))
-      : subjects[key].subscribe(observer);
+    observer: PartialObserver<Value> | ((value: Value) => any),
+  ) => {
+    const wrappedObserver: PartialObserver<Value> =
+      typeof observer === 'function' ? { next: observer } : observer;
+
+    return key === ''
+      ? Object.values(subjects).map(sub => sub.subscribe(wrappedObserver))
+      : subjects[key].subscribe(wrappedObserver);
+  };
 
   // Create the store
   const store = { get, set, subscribe };
