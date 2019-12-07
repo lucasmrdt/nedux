@@ -1,6 +1,6 @@
 {
   "name": "nedux",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "the next redux state management",
   "main": "lib/nedux.js",
   "unpkg": "dist/nedux.js",
