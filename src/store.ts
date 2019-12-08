@@ -13,7 +13,7 @@ export interface Store<
   ) => void;
   subscribe: <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
-    observer: PartialObserver<Value>,
+    observer: PartialObserver<Value> | ((value: Value) => any),
   ) => Subscription | Subscription[];
 }
 
