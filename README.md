@@ -19,6 +19,14 @@ npm install nedux --save
 |  VueJS  |                         `todo`                          |
 | Angular |                         `todo`                          |
 
+## 😍 Examples
+
+|         Name         |                  Source                   |                                                    Codesandbox                                                     |
+| :------------------: | :---------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
+|     ✅ Todo List     |         [here](./examples/todos)          |             [here](https://codesandbox.io/s/nedux-todos-nm8j0?fontsize=14&hidenavigation=1&theme=dark)             |
+| 🔎 Logger Middleware |   [here](./examples/logger-middleware)    |           [here](https://codesandbox.io/s/eloquent-black-hbmut?fontsize=14&hidenavigation=1&theme=dark)            |
+|      🎛 Counter       | [here](./examples/counter-nedux-vs-redux) | [here](https://codesandbox.io/s/counter-nedux-vs-redux-n34b2?fontsize=14&hidenavigation=1&theme=dark&view=preview) |
+
 ## 💻 Basic Example
 
 ### Use it with Typescript ♥️
@@ -177,14 +185,6 @@ store.set('a', 1);
 store.set('a', a => a * 2);
 store.set('b', 'not b');
 ```
-
-## 😍 Examples
-
-|         Name         |                  Source                   |                                                    Codesandbox                                                     |
-| :------------------: | :---------------------------------------: | :----------------------------------------------------------------------------------------------------------------: |
-|     ✅ Todo List     |         [here](./examples/todos)          |             [here](https://codesandbox.io/s/nedux-todos-nm8j0?fontsize=14&hidenavigation=1&theme=dark)             |
-| 🔎 Logger Middleware |   [here](./examples/logger-middleware)    |           [here](https://codesandbox.io/s/eloquent-black-hbmut?fontsize=14&hidenavigation=1&theme=dark)            |
-|      🎛 Counter       | [here](./examples/counter-nedux-vs-redux) | [here](https://codesandbox.io/s/counter-nedux-vs-redux-n34b2?fontsize=14&hidenavigation=1&theme=dark&view=preview) |
 
 ## 🏗 Advised Structure
 
