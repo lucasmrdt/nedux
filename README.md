@@ -40,7 +40,7 @@ enum Filter {
 
 // Create the store
 const todoStore = createStore({
-  todos: [] as Todo,
+  todos: [] as Todo[],
   filter: Filter.ShowAll,
 });
 
