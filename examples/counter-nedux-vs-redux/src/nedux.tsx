@@ -6,11 +6,11 @@ type Store = {
   counter: number;
 };
 
-const store = createStore<Store>({
+const store = createStore({
   counter: 0,
 });
 
-const useStore = createStoreHook<Store>(store);
+const useStore = createStoreHook(store);
 
 let timer = 0;
 

@@ -28,7 +28,7 @@ export const createStore = <
 >(
   initState: T,
   middlewares: Middleware<T, U>[] = [],
-) => {
+): Store<T, K> => {
   type Subjects = { [KK in keyof T]: BehaviorSubject<T[K]> };
 
   // Map each `initState` entiries to a BehaviorSubject
