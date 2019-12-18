@@ -1,4 +1,4 @@
-import { BehaviorSubject, PartialObserver, Subscription } from 'rxjs';
+import { BehaviorSubject, NextObserver, Subscription } from 'rxjs';
 
 type DefaultState = { [key: string]: any };
 
@@ -13,7 +13,7 @@ export interface Store<
   ) => void;
   subscribe: <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
-    observer: PartialObserver<Value> | ((value: Value) => any),
+    observer: NextObserver<Value> | ((value: Value) => any),
   ) => Subscription | Subscription[];
 }
 
@@ -71,10 +71,26 @@ export const createStore = <
    */
   const subscribe = <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
-    observer: PartialObserver<Value> | ((value: Value) => any),
+    observer: NextObserver<Value> | ((value: Value) => any),
+    { withInitialValue = false }: { withInitialValue?: boolean } = {},
   ) => {
-    const wrappedObserver: PartialObserver<Value> =
+    let hasBeenInitialized = false;
+
+    const validObserver: NextObserver<Value> =
       typeof observer === 'function' ? { next: observer } : observer;
+
+    const wrappedObserver: NextObserver<Value> = {
+      ...validObserver,
+      next: withInitialValue
+        ? validObserver.next
+        : (nextValue: Value) => {
+            if (hasBeenInitialized) {
+              validObserver.next && validObserver.next(nextValue);
+            } else {
+              hasBeenInitialized = true;
+            }
+          },
+    };
 
     return key === ''
       ? Object.values(subjects).map(sub => sub.subscribe(wrappedObserver))
