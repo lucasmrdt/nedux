@@ -2,6 +2,8 @@ import { BehaviorSubject, NextObserver, Subscription } from 'rxjs';
 
 type DefaultState = { [key: string]: any };
 
+type SubscriptionOptions = { withInitialValue?: boolean };
+
 export interface Store<
   T extends DefaultState = DefaultState,
   K extends keyof T = keyof T
@@ -14,6 +16,7 @@ export interface Store<
   subscribe: <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
     observer: NextObserver<Value> | ((value: Value) => any),
+    options?: SubscriptionOptions,
   ) => Subscription | Subscription[];
 }
 
@@ -72,7 +75,7 @@ export const createStore = <
   const subscribe = <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
     observer: NextObserver<Value> | ((value: Value) => any),
-    { withInitialValue = false }: { withInitialValue?: boolean } = {},
+    { withInitialValue = false }: SubscriptionOptions = {},
   ) => {
     let hasBeenInitialized = false;
 
