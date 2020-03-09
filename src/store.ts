@@ -30,11 +30,11 @@ export const createStore = <
   U extends K = K
 >(
   initState: T,
-  middlewares: Middleware<T, U>[] = [],
+  middleware: Middleware<T, U>[] = [],
 ): Store<T, K> => {
   type Subjects = { [KK in keyof T]: BehaviorSubject<T[K]> };
 
-  // Map each `initState` entiries to a BehaviorSubject
+  // Map each `initState` entries to a BehaviorSubject
   const subjects: Subjects = Object.keys(initState).reduce(
     (acc, key: string) => {
       const defaultValue = initState[key];
@@ -53,7 +53,7 @@ export const createStore = <
   };
 
   /**
-   * Set a new value of the propertie `key` of the store
+   * Set a new value of the property `key` of the store
    * @param key target key
    * @param value new value
    */
@@ -74,37 +74,44 @@ export const createStore = <
    */
   const subscribe = <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
-    observer: NextObserver<Value> | ((value: Value) => any),
+    observer: NextObserver<Value> | ((value: Value, key: Key) => any),
     { withInitialValue = false }: SubscriptionOptions = {},
   ) => {
     let hasBeenInitialized = false;
 
-    const validObserver: NextObserver<Value> =
-      typeof observer === 'function' ? { next: observer } : observer;
+    const validObserverFactory = (k: Key): NextObserver<Value> =>
+      typeof observer === 'function'
+        ? { next: value => observer(value, k) }
+        : observer;
 
-    const wrappedObserver: NextObserver<Value> = {
-      ...validObserver,
-      next: withInitialValue
-        ? validObserver.next
-        : (nextValue: Value) => {
-            if (hasBeenInitialized) {
-              validObserver.next && validObserver.next(nextValue);
-            } else {
-              hasBeenInitialized = true;
-            }
-          },
+    const wrappedObserverFactory = (k: Key): NextObserver<Value> => {
+      const validObserver = validObserverFactory(k);
+      return {
+        ...validObserver,
+        next: withInitialValue
+          ? validObserver.next
+          : (nextValue: Value) => {
+              if (hasBeenInitialized) {
+                validObserver.next && validObserver.next(nextValue);
+              } else {
+                hasBeenInitialized = true;
+              }
+            },
+      };
     };
 
     return key === ''
-      ? Object.values(subjects).map(sub => sub.subscribe(wrappedObserver))
-      : subjects[key].subscribe(wrappedObserver);
+      ? Object.keys(subjects).map(key =>
+          subjects[key].subscribe(wrappedObserverFactory(key as Key)),
+        )
+      : subjects[key].subscribe(wrappedObserverFactory(key));
   };
 
   // Create the store
   const store = { get, set, subscribe };
 
-  // Intialize all middlewares
-  middlewares.forEach(factory => factory(store));
+  // Initialize all middleware
+  middleware.forEach(factory => factory(store));
 
   return store;
 };
