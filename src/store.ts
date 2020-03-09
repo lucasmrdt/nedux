@@ -15,7 +15,7 @@ export interface Store<
   ) => void;
   subscribe: <Key extends K, Value extends T[K] = T[Key]>(
     key: Key | '',
-    observer: NextObserver<Value> | ((value: Value) => any),
+    observer: NextObserver<Value> | ((value: Value, key: Key) => any),
     options?: SubscriptionOptions,
   ) => Subscription | Subscription[];
 }
